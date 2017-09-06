@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {
     Image,
+    ImageBackground,
     Text,
     View,
     ScrollView,
@@ -131,7 +132,7 @@ export default class ImageSlider extends Component {
     }
 
     render() {
-        const width = this.state.width;
+        const width = this.props.width || this.state.width;
         const height = this.props.height || this.state.height;
         const position = this._getPosition();
         return (<View>
@@ -144,10 +145,11 @@ export default class ImageSlider extends Component {
                 style={[styles.container, this.props.style, {height: height}]}>
                 {this.props.images.map((image, index) => {
                     const imageObject = typeof image === 'string' ? {uri: image} : image;
-                    const imageComponent = <Image
+                    const imageComponent = <ImageBackground
                         key={index}
                         source={imageObject}
                         style={{height, width}}
+                        {...this.props.imageComponentProps}
                     />;
                     if (this.props.onPress) {
                         return (
