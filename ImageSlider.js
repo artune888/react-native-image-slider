@@ -141,6 +141,7 @@ export default class ImageSlider extends Component {
                 decelerationRate={0.99}
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}
                 {...this._panResponder.panHandlers}
                 style={[styles.container, this.props.style, {height: height}]}>
                 {this.props.images.map((image, index) => {
